@@ -1,1 +1,32 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.blue-background {
+    background-color: blue;
+}
+
+.white-text {
+    color: white
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.flex {
+    display: flex
+}
+
+.spread {
+    justify-content: space-between;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.font-xl {
+    font-size: x-large;
+}

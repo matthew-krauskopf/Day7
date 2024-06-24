@@ -1,4 +1,9 @@
-<h1>Dashboard!</h1>
-<div *ngFor="let team of teams">
-    <h1>{{team.name}}</h1>
+<div>
+    <app-top-bar (emitter)="toggleSidenav($event)"></app-top-bar>
+</div>
+<div>
+    <mat-drawer-container>
+        <mat-drawer mode="side" [opened]=this.sidenavOpened><app-team-list></app-team-list></mat-drawer>
+        <mat-drawer-container><app-team-detail></app-team-detail></mat-drawer-container>
+    </mat-drawer-container>
 </div>
