@@ -1,3 +1,9 @@
 <div *ngIf="team">
     <h1>{{team.name}}</h1>
 </div>
+<div class="no-team-background w-full h-full flex align-center justify-center" *ngIf="!team">
+    <div>    
+        <img src="../../../assets/mlb-logo.jfif">
+        <div class="flex justify-center white-text">Select team to view/edit info</div>
+    </div>
+</div>

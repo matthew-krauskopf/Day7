@@ -23,6 +23,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     display: flex
 }
 
+.grid {
+    display: grid;
+}
+
 .spread {
     justify-content: space-between;
 }
