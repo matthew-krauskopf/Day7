@@ -1,4 +1,8 @@
 .sidenav {
-    width: 15rem;
+    width: 17rem;
     background-color: rgb(175, 175, 175);
+}
+
+.fit-window {
+    height: calc(100% - 40px);
 }

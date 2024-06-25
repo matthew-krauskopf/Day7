@@ -1,6 +1,6 @@
 <div class="h-full">
     <app-top-bar (emitter)="toggleSidenav($event)"></app-top-bar>
-    <mat-sidenav-container class="h-full">
+    <mat-sidenav-container class="fit-window">
         <mat-sidenav class="sidenav" mode="side" [opened]="this.sidenavOpened">
             <app-team-list (emitter)="selectTeam($event)" [teams]="this.teams"></app-team-list>
         </mat-sidenav>
