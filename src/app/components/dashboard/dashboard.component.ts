@@ -16,8 +16,9 @@ import { TopBarComponent } from '../top-bar/top-bar.component';
 })
 export class DashboardComponent {
 
-  teams? : Team[];
+  teams : Team[] = [];
   sidenavOpened : boolean = true;
+  selectedTeam? : Team
 
   constructor(protected db : DbService) {
     db.getTeams().subscribe(t => this.teams = t);
@@ -25,5 +26,9 @@ export class DashboardComponent {
 
   toggleSidenav($event : boolean) {
     this.sidenavOpened = $event;
+  }
+
+  selectTeam($event : Team) {
+    this.selectedTeam = $event;
   }
 }
