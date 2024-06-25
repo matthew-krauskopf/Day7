@@ -3,11 +3,12 @@ import { Team } from '../../models/team';
 import { NgFor } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MlbImgService } from '../../services/mlb-img.service';
+import {MatDividerModule} from '@angular/material/divider';
 
 @Component({
   selector: 'app-team-list',
   standalone: true,
-  imports: [NgFor, MatButtonModule],
+  imports: [NgFor, MatButtonModule, MatDividerModule],
   templateUrl: './team-list.component.html',
   styleUrl: './team-list.component.scss'
 })
@@ -17,6 +18,8 @@ export class TeamListComponent {
   @Output() emitter : EventEmitter<Team> = new EventEmitter<Team>();
 
   constructor(protected imgService : MlbImgService) {}
+
+  divOrder : string[] = ["E", "C", "W"];
 
   selectTeam(team : Team) {
     this.emitter.emit(team);
@@ -28,16 +31,12 @@ export class TeamListComponent {
     return divisions;
   }
 
-  printMe() {
-    console.log(this.sortTeams(this.getDivisions()));
-  }
-
   sortedTeams() {
     // Cannot iterate through a map. Gonna need to flatten
     const m : Map<string, Team[]> = this.sortTeams(this.getDivisions());
 
     const ret : Team[][] = [];
-    m.forEach((value, key) => ret.push(value));
+    m.forEach((value, key) => ret.push(value.sort((a,b) => a.city.charCodeAt(0) - b.city.charCodeAt(0))));
     return ret;
   }
 

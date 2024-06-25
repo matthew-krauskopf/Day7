@@ -1,12 +1,14 @@
 <div *ngFor="let division of sortedTeams()">
-    <h2>{{division[0].league + division[0].division}}</h2>
+    <div class="div-label align-center flex justify-center font-l bold">{{division[0].league}} League {{division[0].division}}</div>
     <div *ngFor="let team of division">
-        <button class="w-full white-bg team-button" mat-stroked-button (click)="selectTeam(team)">
+        <button class="w-full white-bg team-button" mat-flat-button (click)="selectTeam(team)">
             <div class="align-center spread flex">
                 <img class="icon-size" src={{this.imgService.getTeamIcon(team.id)}}>
-                <span>{{team.city}} {{team.name}}</span>
+                <span class="bold font-medium">{{team.city}} {{team.name}}</span>
                 <span></span>
             </div>
         </button>
+        <mat-divider></mat-divider>
     </div>
+
 </div>

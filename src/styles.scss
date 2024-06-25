@@ -7,6 +7,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     background-color: blue;
 }
 
+.black-bg {
+    background-color: black;
+}
+
 .white-text {
     color: white
 }
@@ -27,8 +31,16 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     align-items: center;
 }
 
-.font-xl {
-    font-size: x-large;
+.justify-center {
+    justify-content: center;
+}
+
+.font-l {
+    font-size: large;
+}
+
+.font-medium {
+    font-size: medium;
 }
 
 .h-full {
@@ -38,3 +50,25 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .w-full {
     width: 100%;
 }
+
+@mixin generate-spacing ($upper-limit) {
+    @for $i from 1 to $upper-limit {
+        .pad-bot-#{$i} {
+            padding-bottom: $i*2px;
+        }
+
+        .pad-top-#{$i} {
+            padding-top: $i*2px;
+        }
+
+        .margin-bot-#{$i} {
+            margin-bottom: $i*2px;
+        }
+
+        .margin-top-#{$i} {
+            margin-top: $i*2px;
+        }
+    }
+}
+
+@include generate-spacing(21);
