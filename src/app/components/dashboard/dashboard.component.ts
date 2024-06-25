@@ -31,4 +31,25 @@ export class DashboardComponent {
   selectTeam($event : Team) {
     this.selectedTeam = $event;
   }
+
+  getPartialDivisions() : string[] {
+    const divisions = new Set<string>;
+    this.teams.forEach(t => divisions.add(t.division));
+    let ret : string[] = []
+    divisions.forEach((value, key) => ret.push(key));
+    return ret;
+  }
+
+  getLeagues() : string[] {
+    const leagues = new Set<string>;
+    this.teams.forEach(t => leagues.add(t.league));
+    let ret : string[] = []
+    leagues.forEach((value, key) => ret.push(key));
+    return ret;
+  }
+
+  deleteTeam($id : number) {
+    this.teams = this.teams.filter(t => t.id != $id);
+    console.log($id);
+  }
 }

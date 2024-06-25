@@ -1,14 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
-
+@import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-.blue-background {
-    background-color: blue;
-}
 
 .black-bg {
     background-color: black;
+}
+
+.white-bg {
+    background-color: white;
 }
 
 .white-text {
@@ -31,12 +32,24 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     justify-content: space-between;
 }
 
+.flex-wrap {
+    flex-wrap: wrap
+}
+
+.align-spread {
+    align-content: space-between;
+}
+
 .align-center {
     align-items: center;
 }
 
 .justify-center {
     justify-content: center;
+}
+
+.font-xxl {
+    font-size: xx-large;
 }
 
 .font-l {
@@ -55,8 +68,20 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     width: 100%;
 }
 
+html .mat-mdc-mini-fab.mat-accent{
+    background-color: black;
+}
+
 @mixin generate-spacing ($upper-limit) {
     @for $i from 1 to $upper-limit {
+        .pad-left-#{$i} {
+            padding-left: $i*2px;
+        }
+
+        .pad-right-#{$i} {
+            padding-right: $i*2px;
+        }
+
         .pad-bot-#{$i} {
             padding-bottom: $i*2px;
         }
@@ -71,6 +96,14 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
         .margin-top-#{$i} {
             margin-top: $i*2px;
+        }
+
+        .margin-left-#{$i} {
+            margin-left: $i*2px;
+        }
+
+        .margin-right-#{$i} {
+            margin-right: $i*2px;
         }
     }
 }

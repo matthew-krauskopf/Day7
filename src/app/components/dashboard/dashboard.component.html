@@ -5,7 +5,11 @@
             <app-team-list (emitter)="selectTeam($event)" [teams]="this.teams"></app-team-list>
         </mat-sidenav>
         <mat-sidenav-content>
-            <app-team-detail [team]="this.selectedTeam"></app-team-detail>
+            <app-team-detail [team]="this.selectedTeam"
+                [divisions]="this.getPartialDivisions()"
+                [leagues]="this.getLeagues()"
+                (deleteEmitter)="deleteTeam($event)"
+                (cancelEmitter)="this.selectedTeam = undefined"></app-team-detail>
         </mat-sidenav-content>
     </mat-sidenav-container>
 </div>

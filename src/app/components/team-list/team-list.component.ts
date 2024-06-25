@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
 import { Team } from '../../models/team';
 import { NgFor } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
@@ -17,6 +17,16 @@ export class TeamListComponent {
   @Input() teams! : Team[];
   @Output() emitter : EventEmitter<Team> = new EventEmitter<Team>();
 
+  teamsByDiv : Team[][] = [];
+
+  ngOnChanges(changes : SimpleChanges) {
+    for (const change in changes) {
+      if (change === "teams") {
+        this.sortedTeams();
+      }
+    }
+  }
+
   constructor(protected imgService : MlbImgService) {}
 
   divOrder : string[] = ["E", "C", "W"];
@@ -25,29 +35,28 @@ export class TeamListComponent {
     this.emitter.emit(team);
   }
 
-  getDivisions() : Set<string> {
+  getFullDivisions() : Set<string> {
     const divisions = new Set<string>;
-    this.teams.forEach(t => divisions.add(this.formatDiv(t)));
+    this.teams.forEach(t => divisions.add(this.formatFullDiv(t)));
     return divisions;
   }
 
   sortedTeams() {
     // Cannot iterate through a map. Gonna need to flatten
-    const m : Map<string, Team[]> = this.sortTeams(this.getDivisions());
+    const m : Map<string, Team[]> = this.sortTeams(this.getFullDivisions());
 
-    const ret : Team[][] = [];
-    m.forEach((value, key) => ret.push(value.sort((a,b) => a.city.charCodeAt(0) - b.city.charCodeAt(0))));
-    return ret;
+    this.teamsByDiv = [];
+    m.forEach((value, key) => this.teamsByDiv.push(value.sort((a,b) => a.city.charCodeAt(0) - b.city.charCodeAt(0))));
   }
 
   sortTeams(divisions : Set<string>) : Map<string, Team[]> {
     const sorted = new Map<string, Team[]>;
     divisions.forEach(d => sorted.set(d, []));
-    this.teams.forEach(t => sorted.get(this.formatDiv(t))!.push(t))
+    this.teams.forEach(t => sorted.get(this.formatFullDiv(t))!.push(t))
     return sorted;
   }
 
-  formatDiv(team : Team) : string {
+  formatFullDiv(team : Team) : string {
     return team.league + team.division;
   }
 }

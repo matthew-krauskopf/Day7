@@ -1,4 +1,4 @@
-<div *ngFor="let division of sortedTeams()">
+<div *ngFor="let division of this.teamsByDiv">
     <div class="div-label align-center flex justify-center font-l bold">{{division[0].league}} League {{division[0].division}}</div>
     <div *ngFor="let team of division">
         <button class="w-full white-bg team-button" mat-flat-button (click)="selectTeam(team)">

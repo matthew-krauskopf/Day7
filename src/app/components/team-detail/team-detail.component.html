@@ -1,7 +1,49 @@
 <div *ngIf="team">
-    <h1>{{team.name}}</h1>
+    <div class="less-blue-background w-full flex align-center justify-center">
+        <img src={{this.imgService.getTeamLogo(team.id)}} class="logo-size">
+        <span class="margin-left-5 pad-top-5 pad-bot-5 white-text bold font-xxl">{{team.city}} {{team.name}}</span>
+    </div>
+    <div class="pad-top-5 pad-left-5">
+        <div>
+            <mat-form-field class="w-half margin-bot-2">
+                <mat-label>Name</mat-label>
+                <input matInput [(ngModel)]="this.tempTeam.name" [value]=this.team.name>
+            </mat-form-field>
+        
+            <div>
+                <mat-form-field class="w-half margin-bot-2">
+                    <mat-label>City</mat-label>
+                    <input matInput [(ngModel)]="this.tempTeam.city" [value]=this.team.city>
+                </mat-form-field>
+            </div>
+            
+            <div>
+                <mat-form-field class="w-half margin-bot-2">
+                    <mat-label>League</mat-label>
+                    <mat-select [(ngModel)]="this.tempTeam.league" [value]=this.team.league>
+                        <mat-option *ngFor="let league of leagues" [value]=league>{{league}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field class="w-half margin-bot-2">
+                    <mat-label>Division</mat-label>
+                    <mat-select [(ngModel)]="this.tempTeam.division" [value]=this.team.division>
+                        <mat-option *ngFor="let division of divisions" [value]=division>{{division}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+        <div>
+            <button class="w-half margin-right-5" mat-stroked-button (click)="cancelChanges()">Cancel</button>
+            <button class="w-half blue-background" mat-flat-button (click)="saveChanges()">Save</button>
+            <button style="color:white" mat-stroked-button class="margin-top-5 delete-button"
+             (click)="deleteTeam()">Delete Team</button>
+        </div>
+    </div>
 </div>
-<div class="no-team-background w-full h-full flex align-center justify-center" *ngIf="!team">
+
+<div class="blue-background w-full h-full flex align-center justify-center" *ngIf="!team">
     <div>    
         <img src="../../../assets/mlb-logo.jfif">
         <div class="flex justify-center white-text">Select team to view/edit info</div>

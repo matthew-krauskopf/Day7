@@ -1,3 +1,27 @@
-.no-team-background {
+.blue-background {
     background-color: rgb(20,68,132);
+}
+
+.less-blue-background {
+    background-color: rgba(129, 142, 184, 0.774);
+}
+
+.logo-size {
+    height: 40px;
+    width: 40px;
+}
+
+.delete-button {
+    color: white;
+    background-color: red;
+    width: calc(100% - 10px)
+}
+
+.w-half {
+    width: calc(50% - 10px)
+}
+
+.mat-mdc-unelevated-button:not(:disabled) {
+    background-color: rgb(0,92,187);
+    color: white;
 }
