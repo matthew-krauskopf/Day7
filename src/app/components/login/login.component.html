@@ -1,1 +1,26 @@
-<p>login works!</p>
+<div class="w-full h-full grey-bg">
+    <form class="flex justify-center align-center h-full">
+        <mat-card class="login-card">
+            <mat-card-header class="margin-bot-10">
+                <div class="font-xl w-full flex bold justify-center">Sign In</div>
+            </mat-card-header>
+            <mat-card-content>
+                <div>
+                    <mat-form-field appearance="outline" class="w-full">
+                        <mat-label>Username</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field appearance="outline" class="w-full">
+                        <mat-label>Password</mat-label>
+                        <input matInput [type]="'password'">
+                    </mat-form-field>
+                </div>
+                <div class="w-full">
+                    <button [routerLink]="'/home'" mat-flat-button class="w-full">Login</button>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </form>
+</div>
