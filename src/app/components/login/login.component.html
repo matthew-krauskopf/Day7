@@ -8,17 +8,19 @@
                 <div>
                     <mat-form-field appearance="outline" class="w-full">
                         <mat-label>Username</mat-label>
-                        <input matInput>
+                        <input matInput [formControl]=username required/>
+                        <mat-error *ngIf="username.invalid">{{errorMessage()}}</mat-error>
                     </mat-form-field>
                 </div>
-                <div>
+                <div class="margin-top-5">
                     <mat-form-field appearance="outline" class="w-full">
                         <mat-label>Password</mat-label>
-                        <input matInput [type]="'password'">
+                        <input [formControl]=password required matInput [type]="'password'">
+                        <mat-error *ngIf="password.invalid">{{errorMessage()}}</mat-error>
                     </mat-form-field>
                 </div>
                 <div class="w-full">
-                    <button [routerLink]="'/home'" mat-flat-button class="w-full">Login</button>
+                    <button [disabled]="username.invalid || password.invalid" (click)="handleLogin()" mat-flat-button class="w-full">Login</button>
                 </div>
             </mat-card-content>
         </mat-card>
