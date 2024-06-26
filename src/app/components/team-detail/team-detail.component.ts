@@ -24,6 +24,7 @@ export class TeamDetailComponent {
   @Input() leagues? : string[];
   @Input() divisions? : string[];
 
+  @Output() addEmitter : EventEmitter<boolean> = new EventEmitter();
   @Output() deleteEmitter : EventEmitter<number> = new EventEmitter();
   @Output() cancelEmitter : EventEmitter<boolean> = new EventEmitter();
 
@@ -58,8 +59,11 @@ export class TeamDetailComponent {
     if (this.tempTeam.league) this.team!.league = this.tempTeam.league;
     if (this.tempTeam.division) this.team!.division = this.tempTeam.division;
 
-    console.log(this.team);
-    this.deleteEmitter.emit(-1);
+    if (this.team!.id == 0) {
+      this.addEmitter.emit(true);
+    } else {
+      this.deleteEmitter.emit(-1);
+    }
   }
 
   deleteTeam() {

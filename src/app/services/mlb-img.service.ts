@@ -11,10 +11,18 @@ export class MlbImgService {
   logoUrl : string = "https://www.mlbstatic.com/team-logos/team-cap-on-light/{}.svg"
 
   getTeamIcon(id : number) {
-    return this.iconUrl.replace("{}", String(id));
+    if (id > 50) {
+      return this.iconUrl.replace("{}", String(id));
+    } else {
+      return "../../assets/new-team-logo.png"
+    }
   }
 
   getTeamLogo(id: number) {
-    return this.logoUrl.replace("{}", String(id));
+    if (id > 50) {
+      return this.logoUrl.replace("{}", String(id));
+    } else {
+      return "../../assets/new-team-logo.png"
+    }
   }
 }

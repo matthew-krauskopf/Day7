@@ -4,18 +4,20 @@ import { NgFor } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MlbImgService } from '../../services/mlb-img.service';
 import {MatDividerModule} from '@angular/material/divider';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-team-list',
   standalone: true,
-  imports: [NgFor, MatButtonModule, MatDividerModule],
+  imports: [NgFor, MatButtonModule, MatDividerModule, MatIconModule],
   templateUrl: './team-list.component.html',
   styleUrl: './team-list.component.scss'
 })
 export class TeamListComponent {
 
   @Input() teams! : Team[];
-  @Output() emitter : EventEmitter<Team> = new EventEmitter<Team>();
+  @Output() selectTeamEmitter : EventEmitter<Team> = new EventEmitter<Team>();
+  @Output() addTeamEmitter : EventEmitter<boolean> = new EventEmitter<boolean>();
 
   teamsByDiv : Team[][] = [];
 
@@ -32,7 +34,11 @@ export class TeamListComponent {
   divOrder : string[] = ["E", "C", "W"];
 
   selectTeam(team : Team) {
-    this.emitter.emit(team);
+    this.selectTeamEmitter.emit(team);
+  }
+
+  addTeam() {
+    this.addTeamEmitter.emit(true);
   }
 
   getFullDivisions() : Set<string> {

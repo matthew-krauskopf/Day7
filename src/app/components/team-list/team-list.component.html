@@ -1,3 +1,6 @@
+<div class ="w-full">
+    <button mat-flat-button (click)="addTeam()">Add Team<mat-icon>add</mat-icon></button>
+</div>
 <div *ngFor="let division of this.teamsByDiv">
     <div class="div-label align-center flex justify-center font-l bold">{{division[0].league}} League {{division[0].division}}</div>
     <div *ngFor="let team of division">

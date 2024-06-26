@@ -20,6 +20,14 @@ export class DashboardComponent {
   sidenavOpened : boolean = true;
   selectedTeam? : Team
 
+  newTeam : Team = {
+    name: "",
+    id : 0,
+    city: "",
+    division: "",
+    league: ""
+  }
+
   constructor(protected db : DbService) {
     db.getTeams().subscribe(t => this.teams = t);
   }
@@ -30,6 +38,17 @@ export class DashboardComponent {
 
   selectTeam($event : Team) {
     this.selectedTeam = $event;
+  }
+
+  addTeam($event : boolean) {
+    console.log("Made it here!")
+    this.selectedTeam = structuredClone(this.newTeam);
+  }
+
+  saveNewTeam($event : boolean) {
+    this.selectedTeam!.id = (this.teams.length*-1) 
+    this.teams.push(this.selectedTeam!);
+    this.teams = this.teams.slice();
   }
 
   getPartialDivisions() : string[] {
@@ -50,6 +69,5 @@ export class DashboardComponent {
 
   deleteTeam($id : number) {
     this.teams = this.teams.filter(t => t.id != $id);
-    console.log($id);
   }
 }

@@ -21,6 +21,10 @@
     width: calc(50% - 10px)
 }
 
+.input-field {
+    min-width: calc(50% - 10px);
+}
+
 .mat-mdc-unelevated-button:not(:disabled) {
     background-color: rgb(0,92,187);
     color: white;

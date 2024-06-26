@@ -5,20 +5,20 @@
     </div>
     <div class="pad-top-5 pad-left-5">
         <div>
-            <mat-form-field class="w-half margin-bot-2">
+            <mat-form-field class="input-field margin-bot-2">
                 <mat-label>Name</mat-label>
                 <input matInput [(ngModel)]="this.tempTeam.name" [value]=this.team.name>
             </mat-form-field>
         
             <div>
-                <mat-form-field class="w-half margin-bot-2">
+                <mat-form-field class="input-field margin-bot-2">
                     <mat-label>City</mat-label>
                     <input matInput [(ngModel)]="this.tempTeam.city" [value]=this.team.city>
                 </mat-form-field>
             </div>
             
             <div>
-                <mat-form-field class="w-half margin-bot-2">
+                <mat-form-field class="input-field margin-bot-2">
                     <mat-label>League</mat-label>
                     <mat-select [(ngModel)]="this.tempTeam.league" [value]=this.team.league>
                         <mat-option *ngFor="let league of leagues" [value]=league>{{league}}</mat-option>
@@ -26,7 +26,7 @@
                 </mat-form-field>
             </div>
             <div>
-                <mat-form-field class="w-half margin-bot-2">
+                <mat-form-field class="input-field margin-bot-2">
                     <mat-label>Division</mat-label>
                     <mat-select [(ngModel)]="this.tempTeam.division" [value]=this.team.division>
                         <mat-option *ngFor="let division of divisions" [value]=division>{{division}}</mat-option>
